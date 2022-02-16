@@ -2,7 +2,7 @@
 
 class Database{
 
-    private $dns="mysql:host=localhost;db=php_opp_crud";
+    private $dns="mysql:host=localhost;db=php_oop_crud";
     private $user="root";
     private $pass="";
     public $conn;
@@ -24,7 +24,7 @@ class Database{
 
     public function insert($firstname,$lastname,$email,$phone){
 
-        $sql="INSERT INTO user (first_name,last_name,email,phone)  VALUES(:firstname,:lastnmae,:email,:phone)";
+        $sql="INSERT INTO users (first_name,last_name,email,phone)  VALUES(:firstname,:lastname,:email,:phone)";
         $stmt=$this->conn->prepare($sql);
         $stmt->execute(['firstname'=>$firstname,'lastname'=>$lastname,'email'=>$email,'phone'=>$phone]);
 
@@ -35,7 +35,7 @@ class Database{
 
     public function read(){
         $data=array();
-        $sql="SELECT * FROM user";
+        $sql="SELECT * FROM users";
         $stmt=$this->conn->prepare($sql);
         $stmt->execute();
         $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -47,7 +47,7 @@ class Database{
     }
 public function GetUserById($id) {
 
-    $sql="SELECT * FROM user WHERE id=:id";
+    $sql="SELECT * FROM users WHERE id=:id";
     $stmt=$this->conn->prepare($sql);
     $stmt->execute(['id=>$id']);
 
@@ -57,7 +57,7 @@ public function GetUserById($id) {
 
 public function update($id,$firstname,$lastname,$email,$phone){
 
-    $sql="UPDATE user SET first_name=:firstname, lastname=:lastname, email=:email,phone=:phone  WHERE id=:id";
+    $sql="UPDATE users SET first_name=:firstname, last_name=:lastname, email=:email,phone=:phone  WHERE id=:id";
     $stmt=$this->connt->prepare($sql);
     $stmt->execute(['firstname'=>$firstname,'lastname'=>$lastname,'email'=>$email,'phone'=>$phone,'id'=>$id]);
 
@@ -69,7 +69,7 @@ public function update($id,$firstname,$lastname,$email,$phone){
 }
 
 public function delete($id){
-$sql="DELETE FROM user WHERE id=:id";
+$sql="DELETE FROM users WHERE id=:id";
 $stmt=$this->conn->prepare($sql);
 $stmt->execute(['id'=>$id]);
 
@@ -77,7 +77,7 @@ return true;
 
 }
 public function TotalRowCount(){
-    $sql="SLECT * FROM  user";
+    $sql="SLECT * FROM  users";
     $stmt=$this->conn->prepare($sql);
     $stmt->execute();
     $t_row=$stmt->rowCount();
