@@ -76,7 +76,7 @@ $stmt->execute(['id'=>$id]);
 return true;
 
 }
-public function TotlaRowCount(){
+public function TotalRowCount(){
     $sql="SLECT * FROM  user";
     $stmt=$this->conn->prepare($sql);
     $stmt->execute();
@@ -88,5 +88,5 @@ public function TotlaRowCount(){
 
 $ob=new Database();
 
-print_r($ob->read());
+
 ?>
