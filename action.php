@@ -49,11 +49,19 @@ if(isset($_POST['action']) && $_POST['action'] == "view" ){
             
             else{
 
-                echo "<h3></h3>";
+                echo "<h3>no data</h3>";
             }
-        
-    
+            }
 
-    
-}
+            if (isset($_POST['action']) && $_POST['action'] == "insert"){
+                echo"error";
+                $fname=$_POST['fname'];
+                $lname=$_POST['lname'];
+                $email=$_POST['email'];
+                $phone=$_POST['phone'];
+
+                $db->insert($fname,$lname,$email,$phone);
+
+            }
+
 ?>

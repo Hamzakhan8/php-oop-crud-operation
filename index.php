@@ -77,18 +77,18 @@
 
       <!-- Modal body -->
       <div class="modal-body px-4">
-        <form action="" method="post" id="form-data">
+        <form action="" method="POST" id="form-data">
           <div class="form-group">
-            <input type="text" name="fname" class="form-control" placeholder="fname">
+            <input type="text" name="fname" class="form-control" placeholder="first name">
           </div>
           <div class="form-group">
-            <input type="text" name="lname" class="form-control" placeholder="lname">
+            <input type="text" name="lname" class="form-control" placeholder="last name">
           </div>
           <div class="form-group">
-            <input type="text" name="email" class="form-control" placeholder="email">
+            <input type="text" name="email" class="form-control" placeholder="Email">
           </div>
           <div class="form-group">
-            <input type="text" name="phone" class="form-control" placeholder="phone">
+            <input type="text" name="phone" class="form-control" placeholder="Phone">
           </div>
          
         </form>
@@ -96,7 +96,7 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-       <input type="submit" name="submit" value="add user" class="btn btn-danger btn-block">
+       <input type="submit" name="insert" id="insert" value="add new user" class="btn btn-danger btn-block">
       </div>
 
     </div>
@@ -126,14 +126,36 @@
                     //console.log(response);
 
                     $("#showuser").html(response);
-                    $("table").DataTable();
+                    $("table").DataTable({
+                        order:[0,'desc']
+
+                    });
+
+                      
+                    
                   }
 
                 });
 
               }
 
-           
+              //INSERTING DATA THROUGH AJAX
+
+              $("#insert").click(function(e){
+
+                if($("#form-data")[0].checkvalidity()){
+                  e.preventDefault(); //stop to submit the form without data
+
+                  $.ajax({
+                    url:"action.php",
+                    type:"POST",
+                    data:$("#form-data").serialize()+"&action=insert",
+                    success:function(response){
+                        console.log(response);
+                    }
+                  });
+                }
+              })
 
           });
     </script>

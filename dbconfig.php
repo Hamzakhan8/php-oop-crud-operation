@@ -24,11 +24,11 @@ class Database{
     }
 
 
-    public function insert($firstname,$lastname,$email,$phone){
+    public function insert($fname,$lname,$email,$phone){
 
-        $sql="INSERT INTO users (first_name,last_name,email,phone)  VALUES(:fname,:lname,:email,:phone)";
+        $sql="INSERT INTO users(first_name,last_name,email,phone)VALUES(:fname,:lname,:email,:phone)";
         $stmt=$this->conn->prepare($sql);
-        $stmt->execute(['fname'=>$firstname,'lname'=>$lastname,'email'=>$email,'phone'=>$phone]);
+        $stmt->execute(['fname'=>$fname,'lname'=>$lname,'email'=>$email,'phone'=>$phone]);
 
         return true;
 
