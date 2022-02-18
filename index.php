@@ -152,7 +152,7 @@
            
 
           });
-          function showAllusers(){
+      function showAllusers(){
 
 $.ajax({
   url:"action.php",

@@ -92,8 +92,6 @@ public function TotalRowCount(){
 
 
 
-$ob=new Database();
-print_r($ob->read());
 
 
 ?>
