@@ -81,7 +81,7 @@ return true;
 
 }
 public function TotalRowCount(){
-    $sql="SLECT * FROM  users";
+    $sql="SELECT * FROM  users";
     $stmt=$this->conn->prepare($sql);
     $stmt->execute();
     $t_row=$stmt->rowCount();
@@ -90,9 +90,6 @@ public function TotalRowCount(){
 
 
 }
-$db=new Database();
-
-print_r($db->read());
 
 
 

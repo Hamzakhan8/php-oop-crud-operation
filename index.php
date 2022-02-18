@@ -60,39 +60,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="table-responsive " id="showuser">
-          <table class="table table table-striped table-sm table-bordered">
-
-              <thead>
-                 <tr class="text-center">
-                   <th>id</th>
-                   <th>firstname</th>
-                   <th>lastname</th>
-                   <th>email</th>
-                   <th>phone</th>
-                   <th>action</th>
-
-                 </tr>
-              </thead>
-              <tbody>
-               <?php for ($i=1; $i <= 100; $i++):  ?>
-                <tr class="text-center text-secondary">
-                    <td><?=$i?></td>
-                    <td>hamza</td>
-                    <td>khan</td>
-                    <td>hk@gmail.com</td>
-                    <td>2134234</td>
-                    <td>
-                      <a href="" class="text-success" title="view detail"> <i class="fa fa-info-circle fa-lg"></i></a>&nbsp;
-                      <a href="" class="text-primary" title="edit"> <i class="fa fa-edit fa-lg"></i></a>&nbsp;
-                      <a href="" class="text-danger" title="delete"> <i class="fa fa-trash fa-lg"></i></a>
-                    </td>
-
-            <?php endfor ?>
-                </tr>
-
-              
-              </tbody>
-          </table>
+        
         </div>
       </div>
     </div>
@@ -145,8 +113,8 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">
           $(document).ready(function(){
-            $("table").DataTable();
-
+            
+            showAllUsers();
               function showAllUsers(){
                 $.ajax({
                   url:'action.php',
@@ -155,7 +123,10 @@
                  
                   success:function(response){
 
-                    console.log(response);
+                    //console.log(response);
+
+                    $("#showuser").html(response);
+                    $("table").DataTable();
                   }
 
                 });
