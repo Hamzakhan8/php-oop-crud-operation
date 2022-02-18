@@ -88,8 +88,11 @@ public function TotalRowCount(){
     return $t_row;
 }
 
-}
 
+}
+$db=new Database();
+
+print_r($db->read());
 
 
 

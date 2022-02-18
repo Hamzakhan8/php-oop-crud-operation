@@ -147,22 +147,24 @@
           $(document).ready(function(){
             $("table").DataTable();
 
-            showAllusers();
+              function showAllUsers(){
+                $.ajax({
+                  url:'action.php',
+                  type:"POST",
+                  data:{action:"view"},
+                 
+                  success:function(response){
+
+                    console.log(response);
+                  }
+
+                });
+
+              }
 
            
 
           });
-      function showAllusers(){
-
-$.ajax({
-  url:"action.php",
-  type:"POST",
-  data:{action:"view"},
-  succes:function(response){
-    console.log(response);
-  }
-})
-}
     </script>
   </body>
 </html>
