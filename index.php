@@ -111,10 +111,10 @@
       <div class="modal-body px-4">
         <form action="" method="post" id="form-data">
           <div class="form-group">
-            <input type="text" name="firstname" class="form-control" placeholder="firstname">
+            <input type="text" name="fname" class="form-control" placeholder="fname">
           </div>
           <div class="form-group">
-            <input type="text" name="lastname" class="form-control" placeholder="lastname">
+            <input type="text" name="lname" class="form-control" placeholder="lname">
           </div>
           <div class="form-group">
             <input type="text" name="email" class="form-control" placeholder="email">
