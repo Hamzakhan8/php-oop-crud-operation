@@ -265,7 +265,7 @@
                 $("body").on("click",".delBtn",function(e){
 
                   e.preventDefault();
-                  var td= $(this).closest('tr');
+                  var tr= $(this).closest('tr');
                   del_id=$(this).attr('id');
                   Swal.fire({
                   title: 'Are you sure?',
@@ -284,13 +284,38 @@
                        type:"POST",
                        data:{del_id:del_id},
                        success:function(response){
-                        
+
+                         tr.css('background-color','#ff6666');
+
+                         swal.fire(
+                           'deleted!',
+                           'user deleted successfully',
+                           'success'
+                         )
+                         showAllUsers();
+
                        }
                      })
                   }
 })
 
                 });
+
+
+                $("body").on("click",".infoBtn",function(e){
+
+
+                  e.preventDefault();
+                  info_id=$(this).attr('id');
+                  $.ajax({
+                    url:"action.php",
+                    type:"POST",
+                    data:{info_id:info_id},
+                    success:function(response){
+                      console.log(response);
+                    }
+                  })
+                })
          
           });
     </script>

@@ -91,7 +91,11 @@ if(isset($_POST['action']) && $_POST['action'] == "view" ){
 
              
             }
-
+            if(isset($_POST['info_id'])){
+                $id=$_POST['info_id'];
+                $row=$db->getUserById($id);
+                echo json_encode($row);
+            }
 
 
 ?>
