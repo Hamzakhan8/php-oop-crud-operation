@@ -36,9 +36,9 @@ if(isset($_POST['action']) && $_POST['action'] == "view" ){
             <td>'.$row['email'].'</td>
             <td>'.$row['phone'].'</td>
             <td>
-                      <a href="" class="text-success" title="view detail"> <i class="fa fa-info-circle fa-lg"></i></a>&nbsp;
-                      <a href="" class="text-primary" title="edit"> <i class="fa fa-edit fa-lg"></i></a>&nbsp;
-                      <a href="" class="text-danger" title="delete"> <i class="fa fa-trash fa-lg"></i></a>
+                      <a href="" class="text-success infoBtn" title="view detail"> <i class="fa fa-info-circle fa-lg"></i></a>&nbsp;
+                      <a href="" class="text-primary editBtn" title="edit" data-toggle="modal" data-target="#editmodal" > <i class="fa fa-edit fa-lg"></i></a>&nbsp;
+                      <a href="" class="text-danger del" title="delete"> <i class="fa fa-trash fa-lg"></i></a>
                     </td>
                     </tr>  ';
                 }    

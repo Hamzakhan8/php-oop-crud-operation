@@ -106,30 +106,31 @@
 </div>
 
  <!-- edit user Modal  -->
-<div class="modal " id="addModal">
+<div class="modal " id="editmodal">
   <div class="modal-dialog">
     <div class="modal-content">
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">add new user</h4>
+        <h4 class="modal-title">update user data</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body px-4">
-        <form action="" method="POST" id="form-data">
-          <div class="form-group">
-            <input type="text" name="fname" class="form-control" placeholder="first name">
+        <form action="" method="POST" id="edit-form-data">
+          <input type="hidden" name="id" id="id">  
+        <div class="form-group">
+            <input type="text" name="fname" class="form-control" id="fname">
           </div>
           <div class="form-group">
-            <input type="text" name="lname" class="form-control" placeholder="last name">
+            <input type="text" name="lname" class="form-control" id="lname">
           </div>
           <div class="form-group">
-            <input type="text" name="email" class="form-control" placeholder="Email">
+            <input type="text" name="email" class="form-control" id="email">
           </div>
           <div class="form-group">
-            <input type="text" name="phone" class="form-control" placeholder="Phone">
+            <input type="text" name="phone" class="form-control" id="phone">
           </div>
          
         </form>
@@ -137,7 +138,7 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-       <input type="submit" name="insert" id="insert" value="add new user" class="btn btn-danger btn-block">
+       <input type="submit" name="update" id="update" value="update user data" class="btn btn-primary btn-block">
       </div>
 
     </div>
