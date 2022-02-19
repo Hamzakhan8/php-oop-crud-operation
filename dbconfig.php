@@ -49,11 +49,11 @@ class Database{
        
         return $data;
     }
-public function GetUserById($id) {
+public function getUserById($id) {
 
-    $sql="SELECT * FROM users WHERE $id=:id";
+    $sql="SELECT * FROM users WHERE id=:id";
     $stmt=$this->conn->prepare($sql);
-    $stmt->execute(['id=>$id']);
+    $stmt->execute(['id'=>$id]);
 
     $result=$stmt->fetch(PDO::FETCH_ASSOC);
     return $result;
@@ -87,6 +87,8 @@ public function TotalRowCount(){
     $t_row=$stmt->rowCount();
     return $t_row;
 }
+
+
 
 
 }

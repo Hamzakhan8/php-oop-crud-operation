@@ -36,9 +36,9 @@ if(isset($_POST['action']) && $_POST['action'] == "view" ){
             <td>'.$row['email'].'</td>
             <td>'.$row['phone'].'</td>
             <td>
-                      <a href="" class="text-success infoBtn" title="view detail"> <i class="fa fa-info-circle fa-lg"></i></a>&nbsp;
-                      <a href="" class="text-primary editBtn" title="edit" data-toggle="modal" data-target="#editmodal" > <i class="fa fa-edit fa-lg"></i></a>&nbsp;
-                      <a href="" class="text-danger del" title="delete"> <i class="fa fa-trash fa-lg"></i></a>
+                      <a href="" class="text-success infoBtn" title="view detail" id="'.$row['id'].'"> <i class="fa fa-info-circle fa-lg"></i></a>&nbsp;
+                      <a href="" class="text-primary editBtn" title="edit" data-toggle="modal" data-target="#editmodal"  id="'.$row['id'].'" > <i class="fa fa-edit fa-lg"></i></a>&nbsp;
+                      <a href="" class="text-danger delBtn" title="delete"  id="'.$row['id'].'"> <i class="fa fa-trash fa-lg"></i></a>
                     </td>
                     </tr>  ';
                 }    
@@ -63,5 +63,35 @@ if(isset($_POST['action']) && $_POST['action'] == "view" ){
                 $db->insert($fname,$lname,$email,$phone);
 
             }
+            if(isset($_POST['edit_id'])){
+ 
+                $id =$_POST['edit_id'];
+                $row=$db->getUserById($id);
+
+                echo json_encode($row);
+            }
+           if(isset($_POST['action']) && $_POST['action'] == "update" ){
+
+                $id=$_POST['id'];
+                $fname=$_POST['fname'];
+                $lname=$_POST['lname'];
+                $email=$_POST['email'];
+                $phone=$_POST['phone'];
+
+                $db->update($id,$fname,$lname,$email,$phone);
+                
+
+
+
+            }
+            if(isset($_POST['del_id'])){
+ 
+                $id =$_POST['del_id'];
+                $row=$db->delete($id);
+
+             
+            }
+
+
 
 ?>

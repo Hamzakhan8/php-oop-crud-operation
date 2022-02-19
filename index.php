@@ -155,6 +155,8 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.4/datatables.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">
+         
+         
           $(document).ready(function(){
             
             showAllUsers();
@@ -207,7 +209,89 @@
                   });
                 }
               })
+// edit user
 
+              $("body").on("click",".editBtn",function(e){
+
+                   e.preventDefault();
+                   edit_id=$(this).attr('id');
+                   $.ajax({
+
+                     url:"action.php",
+                     type:"POST",
+                     data:{edit_id:edit_id},
+                     success:function(response){
+                       
+                       data=JSON.parse(response);
+
+                       $("#id").val(data.id);
+                       $("#fname").val(data.first_name);
+                       $("#lname").val(data.last_name);
+                       $("#email").val(data.email);
+                       $("#phone").val(data.phone);
+                       
+
+                     }
+                   })
+              });  
+
+            //INSERTING DATA THROUGH AJAX
+
+            $("#update").click(function(e){
+
+                if($("#edit-form-data")[0].checkValidity()){
+                  e.preventDefault(); //stop to submit the form without data
+
+                  $.ajax({
+                    url:"action.php",
+                    type:"POST",
+                    data:$("#edit-form-data").serialize()+"&action=insert",
+                    success:function(response){
+                        Swal.fire({
+                          title: "successfully updated!",
+                         
+                          icon: "success",
+                        })
+
+                        $("#editmodal").modal('hide');
+                        $("#edit-form-data")[0].reset();
+                        showAllUsers();
+                    }
+                  });
+                }
+                })       
+
+                // delete ajax method
+                $("body").on("click",".delBtn",function(e){
+
+                  e.preventDefault();
+                  var td= $(this).closest('tr');
+                  del_id=$(this).attr('id');
+                  Swal.fire({
+                  title: 'Are you sure?',
+                  text: "You won't be able to revert this!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                     
+                     $.ajax({
+
+                       url:"action.php",
+                       type:"POST",
+                       data:{del_id:del_id},
+                       success:function(response){
+                        
+                       }
+                     })
+                  }
+})
+
+                });
+         
           });
     </script>
   </body>
