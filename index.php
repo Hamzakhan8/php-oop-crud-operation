@@ -300,7 +300,7 @@
 })
 
                 });
-
+                  //showing data through ajax
 
                 $("body").on("click",".infoBtn",function(e){
 
@@ -312,7 +312,17 @@
                     type:"POST",
                     data:{info_id:info_id},
                     success:function(response){
-                      console.log(response);
+                     data = JSON.parse(response);
+                     Swal.fire({
+                       title:'<strong>User info:ID('+data.id+')</strong>',
+                       icon: 'info',
+                       html:'<b>First Name</b>'+data.first_name+
+                       '<br><b>Last  Name</b>'+data.last_name+
+                       '<br><b>Email</b>'+data.email+
+                       '<br><b>phone</b>'+data.phone ,
+                       showCancelButton:true,
+                       
+                     })
                     }
                   })
                 })
