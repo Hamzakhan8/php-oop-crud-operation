@@ -52,7 +52,7 @@
       </div>
       <div class="col-lg-6">
         <button type="button" class="btn btn-primary m-1 float-right" data-toggle="modal" data-target="#addModal"> <i class="fas fa-user-plus fa-lg"></i>&nbsp; add new user</button>
-        <a href=" " class="btn btn-success m-1 float-right"> <i class="fas fa-table fa-lg"></i>&nbsp; export to excel</a>
+        <a href="action.php?export=excel" class="btn btn-success m-1 float-right"> <i class="fas fa-table fa-lg"></i>&nbsp; export to excel</a>
       </div>
 
     </div>

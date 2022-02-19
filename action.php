@@ -97,5 +97,44 @@ if(isset($_POST['action']) && $_POST['action'] == "view" ){
                 echo json_encode($row);
             }
 
+                if(isset($_GET['export']) && $_GET['export']=="excel" ){
+
+                    header("Content-Type:application/xls");
+                    header("Content-Disposition:attachment;filename=users.xls");
+                    header("pragma:no-cache");
+                    header("expires:0");
+                    $data=$db->read();
+                    echo'<table border="1">';
+                    echo'<tr>
+                                
+                    <th>id</th>
+                    <th>first name</th>
+                    <th>last name</th>
+                    <th>email</th>
+                    <th>phone</th>
+
+                    </tr>';
+
+                    foreach ($data as $row) {
+
+                        echo '<tr>
+
+                        <td>'.$row['id'].'</td>
+                        <td>'.$row['first_name'].'</td>
+                        <td>'.$row['last_name'].'</td>
+                        <td>'.$row['email'].'</td>
+                        <td>'.$row['phone'].'</td>
+
+
+
+                        
+                        </tr>';
+
+                       
+                    }
+                    echo'</table>';
+
+
+                }
 
 ?>
